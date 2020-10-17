@@ -20,12 +20,31 @@ public:
         y = p.y;
     }
     ~Point() {
-        cout << "~Point()\n";
+        printf("~Point(%d, %d)\n", x, y);
     }
+
+    void increase() {
+        ++x;
+        ++y;
+    }
+    void decrease();
 };
+
+void Point::decrease() {
+    --x;
+    --y;
+}
 
 int main()
 {
-    cout << "Работа началась\n";
+    cout << "Word start\n";
+    {
+        Point staticP1;
+        Point staticP2(7, 7);
+        Point staticP3(staticP2);
+
+        staticP1.increase();
+        staticP3.decrease();
+    }
 }
 
