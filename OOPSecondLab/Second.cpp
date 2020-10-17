@@ -76,6 +76,12 @@ public:
     }
 };
 
+class Sphere {
+private:
+    int z;
+    PointSecond3D* centre;
+};
+
 int Secondmain()
 {
 	setlocale(0, "");
