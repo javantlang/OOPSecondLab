@@ -59,40 +59,65 @@ public:
     ~Point3D() {
         printf("~Point3D(%d, %d, %d)\n", x, y, z);
     }
+
+    void increase3D() {
+        this->increase();
+        ++z;
+    }
+    void decrease3D();
 };
+
+void Point3D::decrease3D() {
+    this->decrease();
+    --z;
+}
 
 int main()
 {
     setlocale(0, "");
-    cout << "Word start\n";
+    cout << "Начало вывода\n";
     {
-        cout << "Создание объектов Point в стеке:\n";
+        cout << "\nСоздание объектов Point в стеке:\n";
         Point staticP1;
         Point staticP2(7, 7);
         Point staticP3(staticP2);
 
         staticP1.increase();
         staticP3.decrease();
-        cout << "Удаление объектов Point в стеке:\n";
+        cout << "\nУдаление объектов Point в стеке:\n";
     }
 
-    cout << "Создание объектов Point в куче:\n";
+    cout << "\nСоздание объектов Point в куче:\n";
     Point* dynamicP1 = new Point();
     Point* dynamicP2 = new Point(9, 9);
     Point* dynamicP3 = new Point(*dynamicP2);
 
     dynamicP2->decrease();
-    cout << "Удаление объектов Point в куче:\n";
+    cout << "\nУдаление объектов Point в куче:\n";
     delete dynamicP1;
     delete dynamicP2;
     delete dynamicP3;
 
     {
-        cout << "Создание объектов Point3D в стеке:\n";
+        cout << "\nСоздание объектов Point3D в стеке:\n";
         Point3D staticP3D1;
         Point3D staticP3D2(7, 7, 7);
         Point3D staticP3D3(staticP3D2);
-        cout << "Удаление объектов Point3D в стеке:\n";
+
+        staticP3D1.increase3D();
+        staticP3D3.decrease3D();
+        cout << "\nУдаление объектов Point3D в стеке:\n";
     }
+
+    cout << "\nСоздание объектов Point3D в куче:\n";
+    Point3D* dynamicP3D1 = new Point3D();
+    Point3D* dynamicP3D2 = new Point3D(9, 9, 9);
+    Point3D* dynamicP3D3 = new Point3D(*dynamicP3D2);
+
+    dynamicP3D2->decrease3D();
+    cout << "\nУдаление объектов Point3D в куче:\n";
+    delete dynamicP3D1;
+    delete dynamicP3D2;
+    delete dynamicP3D3;
 }
 
