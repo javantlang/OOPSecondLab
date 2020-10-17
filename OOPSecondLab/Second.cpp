@@ -2,65 +2,105 @@
 
 using namespace std;
 
-class Point {
+class PointSecond {
+protected:
+    int x;
 public:
-    int x, y;
-    Point() {
-        cout << "Point()\n";
+    int y;
+    PointSecond() {
+        cout << "PointSecond()\n";
         x = 0;
         y = 0;
     }
-    Point(int x, int y) {
-        printf("Point3D(int %d, int %d)\n", x, y);
+    PointSecond(int x, int y) {
+        printf("PointSecond3D(int %d, int %d)\n", x, y);
         this->x = x;
         this->y = y;
     }
-    Point(Point& p) {
-        cout << "Point(Point& p)\n";
+    PointSecond(PointSecond& p) {
+        cout << "PointSecond(PointSecond& p)\n";
         x = p.x;
         y = p.y;
     }
-    virtual ~Point() {
-        printf("~Point(%d, %d)\n", x, y);
+    virtual ~PointSecond() {
+        printf("~PointSecond(%d, %d)\n", x, y);
     }
 
-    virtual void increase() {
+    virtual void Secondincrease() {
         ++x;
         ++y;
     }
+protected:
+    int getX(PointSecond& p) {
+        return this->x;
+    }
+private:
+    int getY() {
+        return this->y;
+    }
 };
 
-class Point3D : public Point {
+class PointSecond3D : public PointSecond {
 private:
     int z;
 public:
-    Point3D() {
-        cout << "Point3D()\n";
+    PointSecond3D() {
+        cout << "PointSecond3D()\n";
         z = 0;
     }
-    Point3D(int x, int y, int z) : Point(x, y) {
-        printf("Point3D(int %d, int %d, int %d)\n", x, y, z);
+    PointSecond3D(int x, int y, int z) : PointSecond(x, y) {
+        printf("PointSecond3D(int %d, int %d, int %d)\n", x, y, z);
         this->z = z;
     }
-    Point3D(Point3D& p) {
-        cout << "Point3D(Point3D& p)\n";
+    PointSecond3D(PointSecond3D& p) {
+        cout << "PointSecond3D(PointSecond3D& p)\n";
         x = p.x;
         y = p.y;
         z = p.z;
     }
-    ~Point3D() {
-        printf("~Point3D(%d, %d, %d)\n", x, y, z);
+    ~PointSecond3D() {
+        printf("~PointSecond3D(%d, %d, %d)\n", x, y, z);
     }
 
-    void increase() {
+    void Secondincrease() {
         ++x;
         ++y;
         ++z;
     }
+    void setfromPointSecond(PointSecond& p) {
+        this->x = getX(p);
+
+        /*Так как в отличии от getX getY имеет модификатор private,
+        а не protected, вызвать его внутри класса потомка мы не можем 
+        this->y = getY(p);*/
+    }
 };
 
-int main()
+int Secondmain()
 {
 	setlocale(0, "");
-	cout << "Second.cpp\n";
+	cout << "\nSecond.cpp\n";
+
+    {
+        PointSecond3D point(1, 2, 3);
+        /*Так как int x имеет модификатор доступа protected
+        он доступен только внутри данного класса и классов-потомков
+        Аналогично с методом getX
+        point.x = 0;
+        point.getX();*/
+
+        point.y = 0;
+
+        /*Так как int z имеет модификатор доступа privat
+        у нас не получится его вызвать
+        Аналогично с getY
+        point.z = 0;
+        point.getY();*/
+    }
+
+    PointSecond* multiPoint = new PointSecond3D(7, 7, 7);
+    multiPoint->Secondincrease();
+
+    delete multiPoint;
+    return 0;
 }

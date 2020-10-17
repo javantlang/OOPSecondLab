@@ -2,6 +2,8 @@
 
 using namespace std;
 
+int Secondmain();
+
 class Point {
 public:
     int x, y;
@@ -126,5 +128,8 @@ int main()
     multiPoint->increase();
     cout << "\nУдаление объекта Point3D, помещенённого его в переменную-указатель класса Point\n";
     delete multiPoint;
+
+    Secondmain();
+    return 0;
 }
 
