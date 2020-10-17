@@ -16,6 +16,7 @@ public:
         this->y = y;
     }
     Point(Point& p) {
+        cout << "Point(Point& p)\n";
         x = p.x;
         y = p.y;
     }
@@ -46,5 +47,13 @@ int main()
         staticP1.increase();
         staticP3.decrease();
     }
+
+    Point* dynamicP1 = new Point();
+    Point* dynamicP2 = new Point(9, 9);
+    Point* dynamicP3 = new Point(*dynamicP2);
+
+    delete dynamicP1;
+    delete dynamicP2;
+    delete dynamicP3;
 }
 
