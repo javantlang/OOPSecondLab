@@ -12,17 +12,17 @@ public:
         y = 0;
     }
     Centre(int x, int y) {
-        printf("Centre(int %d, int %d)\n", x, y);
+        printf("Centre(%d, %d)\n", x, y);
         this->x = x;
         this->y = y;
     }
     Centre(Centre& p) {
-        cout << "Centre(PointSecond& p)\n";
+        cout << "Centre(Centre& p)\n";
         x = p.x;
         y = p.y;
     }
     virtual ~Centre() {
-        printf("~PointSecond(%d, %d)\n", x, y);
+        printf("~Centre(%d, %d)\n", x, y);
     }
 };
 
@@ -35,7 +35,7 @@ public:
         z = 0;
     }
     Centre3D(int x, int y, int z) : Centre(x, y) {
-        printf("Centre3D(int %d, int %d, int %d)\n", x, y, z);
+        printf("Centre3D(%d, %d, %d)\n", x, y, z);
         this->z = z;
     }
     Centre3D(Centre3D& p) {
@@ -60,7 +60,7 @@ public:
         r = 0;
     }
     Sphere(int x, int y, int z, int r) {
-        printf("Sphere(int %d, int %d, int %d, int %d)\n", x, y, z, r);
+        printf("Sphere(%d, %d, %d, %d)\n", x, y, z, r);
         centre = new Centre3D(x, y, z);
         this->r = r;
     }
@@ -70,31 +70,29 @@ public:
         r = sph.r;
     }
     ~Sphere() {
-        printf("~Centre3D(%d, %d, %d, %d)\n", centre->x, centre->y, centre->z, r);
+        printf("~Sphere3D(%d, %d, %d, %d)\n", centre->x, centre->y, centre->z, r);
         delete centre;
     }
 };
 
 int compositionmain()
 {
-    cout << "\ncompositionstart\n";
-
-    cout << "Начало вывода\n";
+    cout << "\nComposition.cpp\n";
     {
-        cout << "\nСоздание объектов Point в стеке:\n";
+        cout << "\nСоздание объектов Sphere в стеке:\n";
         Sphere staticS1;
         Sphere staticS2(7, 7, 7, 7);
         Sphere staticS3(staticS2);
 
-        cout << "\nУдаление объектов Point в стеке:\n";
+        cout << "\nУдаление объектов Sphere в стеке:\n";
     }
 
-    cout << "\nСоздание объектов Point в куче:\n";
+    cout << "\nСоздание объектов Sphere в куче:\n";
     Sphere* dynamicS1 = new Sphere();
     Sphere* dynamicS2 = new Sphere(9, 9, 9, 9);
     Sphere* dynamicS3 = new Sphere(*dynamicS2);
 
-    cout << "\nУдаление объектов Point в куче:\n";
+    cout << "\nУдаление объектов Sphere в куче:\n";
     delete dynamicS1;
     delete dynamicS2;
     delete dynamicS3;

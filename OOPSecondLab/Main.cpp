@@ -14,7 +14,7 @@ public:
         y = 0;
     }
     Point(int x, int y) {
-        printf("Point3D(int %d, int %d)\n", x, y);
+        printf("Point3D(%d, %d)\n", x, y);
         this->x = x;
         this->y = y;
     }
@@ -48,7 +48,7 @@ public:
         z = 0;
     }
     Point3D(int x, int y, int z) : Point(x, y) {
-        printf("Point3D(int %d, int %d, int %d)\n", x, y, z);
+        printf("Point3D(%d, %d, %d)\n", x, y, z);
         this->z = z;
     }
     Point3D(Point3D& p) {
