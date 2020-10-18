@@ -4,6 +4,7 @@ using namespace std;
 
 class PointSecond {
 protected:
+    //Теперь x имеет видимость только в данном классе и классах-потомках
     int x;
 public:
     int y;
@@ -22,10 +23,14 @@ public:
         x = p.x;
         y = p.y;
     }
+    /*Чтобы изначально вызывался деструктор потомков,
+    нужно задать деструктору базового класса virtual
+    */
     virtual ~PointSecond() {
         printf("~PointSecond(%d, %d)\n", x, y);
     }
 
+    /*Указывает методу virtual, чтобы при переопределении вызывался метод потомка*/
     virtual void Secondincrease() {
         ++x;
         ++y;
@@ -34,6 +39,7 @@ protected:
     int getX(PointSecond& p) {
         return this->x;
     }
+    //Доступно только в данном классе
 private:
     int getY() {
         return this->y;

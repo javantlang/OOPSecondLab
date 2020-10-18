@@ -52,6 +52,9 @@ public:
 class Sphere {
 protected:
     int r;
+    /*Создаём в классе Sphere атрибут,
+    который является объектов класса Centre3D.
+    Налицо явная композиция*/
     Centre3D* centre;
 public:
     Sphere() {
