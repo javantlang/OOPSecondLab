@@ -3,6 +3,7 @@
 using namespace std;
 
 int Secondmain();
+int compositionmain();
 
 class Point {
 public:
@@ -130,6 +131,7 @@ int main()
     delete multiPoint;
 
     Secondmain();
+    compositionmain();
     return 0;
 }
 

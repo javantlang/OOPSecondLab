@@ -5,6 +5,7 @@ using namespace std;
 class Centre {
 public:
     int x, y;
+
     Centre() {
         cout << "Centre()\n";
         x = 0;
@@ -60,9 +61,7 @@ public:
     }
     Sphere(int x, int y, int z, int r) {
         printf("Sphere(int %d, int %d, int %d, int %d)\n", x, y, z, r);
-        centre->x = x;
-        centre->y = y;
-        centre->z = z;
+        centre = new Centre3D(x, y, z);
         this->r = r;
     }
     Sphere(Sphere& sph) {
