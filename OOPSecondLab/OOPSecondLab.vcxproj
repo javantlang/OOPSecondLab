@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Composition.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Second.cpp" />
   </ItemGroup>

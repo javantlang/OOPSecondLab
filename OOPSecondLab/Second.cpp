@@ -13,7 +13,7 @@ public:
         y = 0;
     }
     PointSecond(int x, int y) {
-        printf("PointSecond3D(int %d, int %d)\n", x, y);
+        printf("PointSecond(int %d, int %d)\n", x, y);
         this->x = x;
         this->y = y;
     }
@@ -74,12 +74,6 @@ public:
         а не protected, вызвать его внутри класса потомка мы не можем 
         this->y = getY(p);*/
     }
-};
-
-class Sphere {
-private:
-    int z;
-    PointSecond3D* centre;
 };
 
 int Secondmain()
